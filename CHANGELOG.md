@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.2.0
+
+### Minor Changes
+
+- 560d218: Just testing
+
 ## 1.1.3
 
 ### Patch Changes
