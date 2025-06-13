@@ -23,11 +23,5 @@
     "release": "yarn cs publish",
     "versioning": "yarn changeset version"
   },
-  "packageManager": "yarn@4.9.1",
-  "files": [
-    "dist/",
-    "README.md",
-    "LICENSE",
-    "package.json"
-  ]
+  "packageManager": "yarn@4.9.1"
 }
