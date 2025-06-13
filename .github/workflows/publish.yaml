@@ -77,9 +77,10 @@ jobs:
           # Ensure trailing new line in .gitignore
           [ -s .gitignore ] && [ "$(tail -c1 .gitignore)" != $'\n' ] && echo >> .gitignore
           for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt" "**/test-sensible-file2.txt"; do
-            grep -qxF "$entry" .gitignore || echo "$entry" >> .gitignore
+            grep -qxF "$entry" .gitignore || { echo "$entry" >> .gitignore && echo "Added: $entry"; }
           done
           sort -u .gitignore -o .gitignore
+          cat .gitignore
 
       # DELETE ME
       - name: Test sensible file
