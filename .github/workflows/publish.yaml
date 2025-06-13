@@ -44,6 +44,13 @@ jobs:
           username: ${{ env.USERNAME }}
           password: ${{ env.PASSWORD }}
 
+      - name: Delete sensitive files
+        shell: bash
+        run: |
+          rm -rf openvpn.log
+          rm -rf openvpn.pid
+          rm -rf up.txt
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -68,31 +75,6 @@ jobs:
       #   with:
       #     detached: true
       #     limit-access-to-actor: true
-
-      - name: Add entries to .gitignore
-        shell: bash
-        run: |
-          # Ensure .gitignore exists
-          [ -f .gitignore ] || touch .gitignore
-          # Ensure trailing new line in .gitignore
-          [ -s .gitignore ] && [ "$(tail -c1 .gitignore)" != $'\n' ] && echo >> .gitignore
-          for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt" "**/test-sensible-file2.txt"; do
-            grep -qxF "$entry" .gitignore || { echo "$entry" >> .gitignore && echo "Added: $entry"; }
-          done
-          sort -u .gitignore -o .gitignore
-          cat .gitignore
-
-      # DELETE ME
-      - name: Test sensible file
-        run: |
-          echo "Hi" > test-sensible-file2.txt
-          echo "Hi3" > test-sensible-file3.txt
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          detached: true
-          limit-access-to-actor: true
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
