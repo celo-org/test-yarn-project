@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.1.1
+
+### Patch Changes
+
+- 213159e: Test minor message change
+
 ## 1.1.0
 
 ### Minor Changes
