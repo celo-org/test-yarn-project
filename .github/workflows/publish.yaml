@@ -70,7 +70,10 @@ jobs:
       #     limit-access-to-actor: true
 
       - name: Add entries to .gitignore
+        shell: bash
         run: |
+          # Ensure .gitignore exists
+          [ -f .gitignore ] || touch .gitignore
           # Ensure trailing new line in .gitignore
           [ -s .gitignore ] && [ "$(tail -c1 .gitignore)" != $'\n' ] && echo >> .gitignore
           for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt" "**/test-sensible-file2.txt"; do
