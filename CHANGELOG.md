@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.1.3
+
+### Patch Changes
+
+- f4586f1: Test again
+
 ## 1.1.2
 
 ### Patch Changes
