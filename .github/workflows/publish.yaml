@@ -71,14 +71,14 @@ jobs:
 
       - name: Add entries to .gitignore
         run: |
-          for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt" "**/test-sensible-file.txt"; do
+          for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt" "**/test-sensible-file2.txt"; do
             grep -qxF "$entry" .gitignore || echo "$entry" >> .gitignore
           done
           sort -u .gitignore -o .gitignore
 
       # DELETE ME
       - name: Test sensible file
-        run: echo "Hi" > test-sensible-file.txt
+        run: echo "Hi" > test-sensible-file2.txt
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
