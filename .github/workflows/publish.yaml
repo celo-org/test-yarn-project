@@ -1,0 +1,94 @@
+name: "[cLabs] Test OpenVPN"
+
+on:
+  push:
+    branches:
+      - main
+  # workflow_dispatch:
+
+jobs:
+  openvpn:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Test IP 1
+        run: |
+          curl -s https://api.ipify.org
+
+      - name: Akeyless Get Secrets
+        id: get_auth_token
+        uses: docker://us-west1-docker.pkg.dev/devopsre/akeyless-public/akeyless-action:latest
+        with:
+          api-url: https://api.gateway.akeyless.celo-networks-dev.org
+          access-id: p-kf9vjzruht6l
+          static-secrets: '{"/static-secrets/NPM/openvpn/config_file":"CONFIG_FILE", "/static-secrets/NPM/openvpn/user":"USERNAME", "/static-secrets/NPM/openvpn/password":"PASSWORD", "/static-secrets/NPM/openvpn/alvaro_token":"NPM_TOKEN"}'
+
+      - name: Setup Config File
+        run: |
+          echo "${{ env.CONFIG_FILE }}" > /tmp/openvpn.conf
+          chmod 600 /tmp/openvpn.conf
+
+      - name: Install OpenVPN
+        run: |
+          sudo apt update
+          sudo apt install -y openvpn openvpn-systemd-resolved
+
+      - name: Connect to VPN
+        uses: "kota65535/github-openvpn-connect-action@v3.1.0"
+        with:
+          config_file: /tmp/openvpn.conf
+          echo_config: false
+          username: ${{ env.USERNAME }}
+          password: ${{ env.PASSWORD }}
+
+      - name: Test IP 2
+        run: |
+          curl -s https://api.ipify.org
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 'enable corepack for yarn'
+        run: sudo corepack enable yarn
+        shell: bash
+
+      # must call twice because of chicken and egg problem with yarn and node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        shell: bash
+        run: yarn
+
+      # - name: Bump Version
+      #   shell: bash
+      #   run: |
+      #     yarn version patch
+
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+      #   with:
+      #     detached: true
+      #     limit-access-to-actor: true
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ env.NPM_TOKEN }}
+        with:
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: yarn release
+          version: yarn versioning

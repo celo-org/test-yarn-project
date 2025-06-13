@@ -1,0 +1,33 @@
+{
+  "name": "@fernandezfalvaro/test-files",
+  "version": "1.0.3",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/celo-org/test-yarn-project"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "provenance": true
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.29.4",
+    "chalk": "^5.4.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "cs": "yarn changeset",
+    "release": "yarn cs publish",
+    "versioning": "yarn changeset version"
+  },
+  "packageManager": "yarn@4.9.1",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ]
+}
