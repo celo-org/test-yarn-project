@@ -18,10 +18,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Test IP 1
-        run: |
-          curl -s https://api.ipify.org
-
       - name: Akeyless Get Secrets
         id: get_auth_token
         uses: docker://us-west1-docker.pkg.dev/devopsre/akeyless-public/akeyless-action:latest
@@ -48,10 +44,6 @@ jobs:
           username: ${{ env.USERNAME }}
           password: ${{ env.PASSWORD }}
 
-      - name: Test IP 2
-        run: |
-          curl -s https://api.ipify.org
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -70,11 +62,6 @@ jobs:
       - name: Install Dependencies
         shell: bash
         run: yarn
-
-      # - name: Bump Version
-      #   shell: bash
-      #   run: |
-      #     yarn version patch
 
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@v3
