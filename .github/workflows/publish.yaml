@@ -76,6 +76,10 @@ jobs:
           done
           sort -u .gitignore -o .gitignore
 
+      # DELETE ME
+      - name: Test sensible file
+        run: echo "Hi" > test-sensible-file.txt
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
