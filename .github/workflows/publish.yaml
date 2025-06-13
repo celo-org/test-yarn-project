@@ -71,7 +71,7 @@ jobs:
 
       - name: Add entries to .gitignore
         run: |
-          for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt"; do
+          for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt" "**/test-sensible-file.txt"; do
             grep -qxF "$entry" .gitignore || echo "$entry" >> .gitignore
           done
           sort -u .gitignore -o .gitignore
