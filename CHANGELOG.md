@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.1.2
+
+### Patch Changes
+
+- c4badbe: Test sensitive files
+
 ## 1.1.1
 
 ### Patch Changes
