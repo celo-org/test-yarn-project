@@ -69,6 +69,13 @@ jobs:
       #     detached: true
       #     limit-access-to-actor: true
 
+      - name: Add entries to .gitignore
+        run: |
+          for entry in "**/openvpn.conf" "**/openvpn.log" "**/openvpn.pid" "**/up.txt"; do
+            grep -qxF "$entry" .gitignore || echo "$entry" >> .gitignore
+          done
+          sort -u .gitignore -o .gitignore
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
