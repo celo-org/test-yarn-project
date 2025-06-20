@@ -23,5 +23,5 @@
     "release": "yarn cs publish",
     "versioning": "yarn changeset version"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.1"
 }
