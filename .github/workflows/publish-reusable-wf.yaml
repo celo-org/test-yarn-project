@@ -1,0 +1,25 @@
+name: "[cLabs] Test OpenVPN"
+
+on:
+  push:
+    branches:
+      - main
+  # workflow_dispatch:
+
+jobs:
+  openvpn:
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: write
+      security-events: write
+      attestations: write
+      id-token: write
+    concurrency:
+      group:   ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+      cancel-in-progress: true
+    uses: celo-org/reusable-workflows/.github/workflows/npm-publish.yaml@alvaro-npm-publish
+    with:
+      node-version: 20
+      version-command: yarn versioning
+      publish-command: yarn release
