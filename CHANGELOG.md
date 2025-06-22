@@ -1,5 +1,12 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.2.1
+
+### Patch Changes
+
+- 47ac2bd: Test GH WF 2
+- f174a0b: Test GH WF
+
 ## 1.2.0
 
 ### Minor Changes
