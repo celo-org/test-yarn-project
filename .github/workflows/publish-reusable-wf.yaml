@@ -24,4 +24,4 @@ jobs:
       node-version: 20
       version-command: yarn versioning
       publish-command: yarn release
-      harden-runner: false
+      # harden-runner: false
