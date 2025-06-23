@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.2.3
+
+### Patch Changes
+
+- ebf5375: Test Harden
+
 ## 1.2.2
 
 ### Patch Changes
