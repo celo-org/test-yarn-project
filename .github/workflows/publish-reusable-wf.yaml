@@ -33,5 +33,5 @@ jobs:
       - name: Check outputs
         run: |
           echo "Outputs from openvpn job:"
-          echo "version: ${{ needs.openvpn.outputs.publishedPackages }}"
-          echo "version-tag: ${{ needs.openvpn.outputs.published }}"
+          echo "publishedPackages: ${{ needs.openvpn.outputs.publishedPackages }}"
+          echo "published: ${{ needs.openvpn.outputs.published }}"
