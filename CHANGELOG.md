@@ -1,5 +1,12 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.2.4
+
+### Patch Changes
+
+- f23413d: Test 2
+- 290bad1: Test var
+
 ## 1.2.3
 
 ### Patch Changes
