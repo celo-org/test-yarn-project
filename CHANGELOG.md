@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.2.5
+
+### Patch Changes
+
+- da2520d: Test Outputs
+
 ## 1.2.4
 
 ### Patch Changes
