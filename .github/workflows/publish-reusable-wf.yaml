@@ -25,3 +25,13 @@ jobs:
       version-command: yarn versioning
       publish-command: yarn release
       # harden-runner: false
+
+  test-outputs:
+    needs: [openvpn]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check outputs
+        run: |
+          echo "Outputs from openvpn job:"
+          echo "version: ${{ needs.openvpn.outputs.publishedPackages }}"
+          echo "version-tag: ${{ needs.openvpn.outputs.published }}"
