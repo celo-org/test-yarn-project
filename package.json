@@ -1,6 +1,6 @@
 {
   "name": "@fernandezfalvaro/test-files",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "main": "index.js",
   "license": "MIT",
   "type": "module",
@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node index.js",
     "cs": "yarn changeset",
-    "release": "npm publish --provenance --access public",
+    "release": "yarn cs publish",
     "versioning": "yarn changeset version"
   },
   "packageManager": "yarn@4.9.1"
