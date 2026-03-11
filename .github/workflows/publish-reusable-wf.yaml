@@ -23,7 +23,7 @@ jobs:
     with:
       node-version: 20
       version-command: yarn versioning
-      publish-command: yarn release
+      publish-command: npm publish
       # harden-runner: false
 
   test-outputs:
