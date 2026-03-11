@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node index.js",
     "cs": "yarn changeset",
-    "release": "yarn cs publish",
+    "release": "npm publish --provenance --access public",
     "versioning": "yarn changeset version"
   },
   "packageManager": "yarn@4.9.1"
