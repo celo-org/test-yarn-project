@@ -1,5 +1,11 @@
 # @fernandezfalvaro/my-yarn-project
 
+## 1.2.10
+
+### Patch Changes
+
+- 6fa1af8: Log
+
 ## 1.2.5
 
 ### Patch Changes
