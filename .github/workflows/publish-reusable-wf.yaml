@@ -19,7 +19,7 @@ jobs:
     concurrency:
       group:   ${{ github.workflow }}-${{ github.head_ref || github.ref }}
       cancel-in-progress: true
-    uses: celo-org/reusable-workflows/.github/workflows/npm-publish.yaml@alvaro-npm-publish
+    uses: celo-org/reusable-workflows/.github/workflows/npm-publish.yaml@alvaro-npm-publish-oidc
     with:
       node-version: 20
       version-command: yarn versioning
