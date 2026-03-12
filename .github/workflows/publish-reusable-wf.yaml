@@ -21,7 +21,7 @@ jobs:
       cancel-in-progress: true
     uses: celo-org/reusable-workflows/.github/workflows/npm-publish.yaml@alvaro-npm-publish-oidc
     with:
-      node-version: 20
+      node-version: 18
       version-command: yarn versioning
       publish-command: yarn release
       # harden-runner: false
